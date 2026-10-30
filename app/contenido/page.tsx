@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Workspace from './Workspace';
 
 export const metadata: Metadata = {
-  title: 'Producción de contenido — Zhao',
+  title: 'Aurum Estudio — Producción de contenido',
   robots: { index: false },
 };
 

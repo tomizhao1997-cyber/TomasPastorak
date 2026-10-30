@@ -24,7 +24,7 @@ type Row = {
 type View = 'table' | 'board';
 type SyncState = 'loading' | 'saving' | 'saved' | 'error';
 
-const VIEW_KEY = 'zhao-contenido-view';
+const VIEW_KEY = 'aurum-contenido-view';
 const SAVE_DELAY = 500;
 const STATUSES: Status[] = ['Not started', 'In progress', 'Done'];
 const FORMATOS: Formato[] = ['Reel', 'Carrusel', 'Historia', 'TikTok', 'Anuncio'];
@@ -496,8 +496,8 @@ export default function Workspace() {
         <nav className="flex w-60 shrink-0 flex-col bg-[#f7f7f5] text-[14px] text-[#5f5e5b] max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-50 max-md:shadow-xl">
           <div className="flex h-11 items-center justify-between px-3">
             <div className="flex items-center gap-2 font-medium text-[#37352f]">
-              <span className="flex h-5 w-5 items-center justify-center rounded bg-[#37352f] text-[11px] font-bold text-white">Z</span>
-              Zhao Workspace
+              <span className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-[#e6c46a] to-[#a8792a] text-[11px] font-bold text-white">A</span>
+              Aurum Estudio
             </div>
             <button onClick={() => setSidebar(false)} className="rounded px-1 hover:bg-black/[0.06]" title="Cerrar sidebar">
               «
@@ -510,7 +510,7 @@ export default function Workspace() {
             </label>
             <div className="flex items-center gap-2 rounded px-2 py-1 hover:bg-black/[0.04]">⌂ Inicio</div>
           </div>
-          <div className="mt-4 px-3 pb-1 text-[12px] font-medium text-[#91918e]">Privado</div>
+          <div className="mt-4 px-3 pb-1 text-[12px] font-medium text-[#91918e]">Clientes</div>
           <div className="flex-1 overflow-y-auto px-1.5">
             <div className="flex items-center gap-2 rounded bg-black/[0.05] px-2 py-1 font-medium text-[#37352f]">
               <span>🍣</span>
@@ -537,7 +537,9 @@ export default function Workspace() {
               ☰
             </button>
           )}
-          <span className="truncate text-[#37352f]">🍣 {title}</span>
+          <span className="truncate text-[#37352f]">
+            <span className="text-[#9b9a97]">Aurum Estudio / </span>🍣 {title}
+          </span>
           <span className={`ml-auto text-[12px] ${sync === 'error' ? 'text-[#d44c47]' : 'text-[#9b9a97]'}`}>
             {{ loading: 'Cargando…', saving: 'Guardando…', saved: 'Guardado', error: 'Error al guardar — revisá la conexión' }[sync]}
           </span>
@@ -545,7 +547,7 @@ export default function Workspace() {
 
         <div className="flex-1 overflow-y-auto">
           {/* cover */}
-          <div className="h-[30vh] max-h-[280px] min-h-[140px] w-full bg-[radial-gradient(ellipse_at_30%_40%,#c98a3c_0%,#5a2f14_45%,#1a0f0a_100%)]" />
+          <div className="h-[30vh] max-h-[280px] min-h-[140px] w-full bg-[radial-gradient(ellipse_at_30%_40%,#e6c46a_0%,#a8792a_35%,#3a2a10_75%,#14100a_100%)]" />
 
           <div className="px-4 sm:px-24">
             <div className="-mt-10 text-[64px] leading-none">🍣</div>
