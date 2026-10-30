@@ -39,3 +39,15 @@ body {
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, black 40%, transparent 100%);
 }
+
+/* Aurum Estudio: oxblood with a crumpled-plastic sheen, after their Instagram posts */
+.aurum-texture {
+  background-color: #3a0a0c;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.07) 28%, transparent 34%),
+    linear-gradient(62deg, transparent 48%, rgba(255, 255, 255, 0.05) 55%, transparent 60%),
+    linear-gradient(160deg, transparent 66%, rgba(255, 255, 255, 0.06) 72%, transparent 78%),
+    radial-gradient(ellipse at 20% 15%, #5a1215 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 90%, #1f0506 0%, transparent 60%);
+}

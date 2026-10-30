@@ -225,7 +225,7 @@ function Cell({
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === 'Escape') (e.target as HTMLInputElement).blur();
         }}
-        className="h-full w-full bg-white px-2 text-[#37352f] shadow-[inset_0_0_0_2px_#2383e2] outline-none"
+        className="h-full w-full bg-white px-2 text-[#37352f] shadow-[inset_0_0_0_2px_#7a1a1e] outline-none"
       />
     );
   }
@@ -325,7 +325,7 @@ function Board({ rows, onChange, onOpen, onAdd }: { rows: Row[]; onChange: (id: 
               setDragId(null);
               setOver(null);
             }}
-            className={`w-[260px] shrink-0 rounded-lg p-2 transition-colors ${STATUS_STYLE[status].col} ${over === status ? 'ring-2 ring-[#2383e2]/40' : ''}`}
+            className={`w-[260px] shrink-0 rounded-lg p-2 transition-colors ${STATUS_STYLE[status].col} ${over === status ? 'ring-2 ring-[#7a1a1e]/40' : ''}`}
           >
             <div className="mb-2 flex items-center gap-2 px-1 text-[14px]">
               <StatusPill value={status} />
@@ -490,40 +490,43 @@ export default function Workspace() {
   const tableWidth = COLUMNS.reduce((a, c) => a + c.width, 0);
 
   return (
-    <div className="fixed inset-0 flex bg-white font-sans text-[14px] text-[#37352f] [color-scheme:light] selection:bg-[#2383e2]/20 selection:text-inherit">
+    <div className="fixed inset-0 flex bg-white font-sans text-[14px] text-[#37352f] [color-scheme:light] selection:bg-[#7a1a1e]/20 selection:text-inherit">
       {/* sidebar */}
       {sidebar && (
-        <nav className="flex w-60 shrink-0 flex-col bg-[#f7f7f5] text-[14px] text-[#5f5e5b] max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-50 max-md:shadow-xl">
-          <div className="flex h-11 items-center justify-between px-3">
-            <div className="flex items-center gap-2 font-medium text-[#37352f]">
-              <span className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-[#e6c46a] to-[#a8792a] text-[11px] font-bold text-white">A</span>
-              Aurum Estudio
+        <nav className="aurum-texture flex w-60 shrink-0 flex-col text-[14px] text-white/70 max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-50 max-md:shadow-xl">
+          <div className="flex items-start justify-between px-4 pb-3 pt-4">
+            <div>
+              <div className="text-[26px] font-extrabold leading-none tracking-[-0.04em] text-white">aurum</div>
+              <div className="mt-1.5 text-[11px] text-white/55">Creamos con criterio 🧷</div>
             </div>
-            <button onClick={() => setSidebar(false)} className="rounded px-1 hover:bg-black/[0.06]" title="Cerrar sidebar">
+            <button onClick={() => setSidebar(false)} className="rounded px-1 text-white/60 hover:bg-white/10 hover:text-white" title="Cerrar sidebar">
               «
             </button>
           </div>
           <div className="px-1.5">
-            <label className="flex items-center gap-2 rounded px-2 py-1 hover:bg-black/[0.04]">
+            <label className="flex items-center gap-2 rounded px-2 py-1 hover:bg-white/[0.08]">
               <span>⌕</span>
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar" className="w-full bg-transparent outline-none placeholder:text-[#91918e]" />
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar" className="w-full bg-transparent text-white outline-none placeholder:text-white/45" />
             </label>
-            <div className="flex items-center gap-2 rounded px-2 py-1 hover:bg-black/[0.04]">⌂ Inicio</div>
+            <div className="flex items-center gap-2 rounded px-2 py-1 hover:bg-white/[0.08]">⌂ Inicio</div>
           </div>
-          <div className="mt-4 px-3 pb-1 text-[12px] font-medium text-[#91918e]">Clientes</div>
+          <div className="mt-4 px-3 pb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white/40">Clientes</div>
           <div className="flex-1 overflow-y-auto px-1.5">
-            <div className="flex items-center gap-2 rounded bg-black/[0.05] px-2 py-1 font-medium text-[#37352f]">
+            <div className="flex items-center gap-2 rounded bg-white/[0.12] px-2 py-1 font-medium text-white">
               <span>🍣</span>
               <span className="truncate">{title || 'Sin título'}</span>
             </div>
             {rows.slice(0, 40).map((r) => (
-              <button key={r.id} onClick={() => setOpenId(r.id)} className={`flex w-full items-center gap-2 rounded py-1 pl-6 pr-2 text-left hover:bg-black/[0.04] ${openId === r.id ? 'bg-black/[0.05] text-[#37352f]' : ''}`}>
-                {Icon.page}
+              <button key={r.id} onClick={() => setOpenId(r.id)} className={`flex w-full items-center gap-2 rounded py-1 pl-6 pr-2 text-left hover:bg-white/[0.08] ${openId === r.id ? 'bg-white/[0.12] text-white' : ''}`}>
+                <span className="opacity-60 invert">{Icon.page}</span>
                 <span className="truncate">{r.name || 'Sin título'}</span>
               </button>
             ))}
           </div>
-          <button onClick={() => add({}, true)} className="m-1.5 flex items-center gap-2 rounded px-2 py-1 text-left hover:bg-black/[0.04]">
+          <div className="border-t border-white/10 px-4 py-3 text-[11px] leading-relaxed text-white/40">
+            pauta publicitaria • estrategia de mkt • creatividad • producción de contenido • páginas webs
+          </div>
+          <button onClick={() => add({}, true)} className="mx-1.5 mb-2 flex items-center gap-2 rounded px-2 py-1 text-left hover:bg-white/[0.08]">
             + Nueva página
           </button>
         </nav>
@@ -538,7 +541,8 @@ export default function Workspace() {
             </button>
           )}
           <span className="truncate text-[#37352f]">
-            <span className="text-[#9b9a97]">Aurum Estudio / </span>🍣 {title}
+            <span className="font-bold tracking-[-0.03em] text-[#5a1215]">aurum</span>
+            <span className="text-[#9b9a97]"> / </span>🍣 {title}
           </span>
           <span className={`ml-auto text-[12px] ${sync === 'error' ? 'text-[#d44c47]' : 'text-[#9b9a97]'}`}>
             {{ loading: 'Cargando…', saving: 'Guardando…', saved: 'Guardado', error: 'Error al guardar — revisá la conexión' }[sync]}
@@ -547,15 +551,23 @@ export default function Workspace() {
 
         <div className="flex-1 overflow-y-auto">
           {/* cover */}
-          <div className="h-[30vh] max-h-[280px] min-h-[140px] w-full bg-[radial-gradient(ellipse_at_30%_40%,#e6c46a_0%,#a8792a_35%,#3a2a10_75%,#14100a_100%)]" />
+          <div className="aurum-texture relative flex h-[30vh] max-h-[280px] min-h-[160px] w-full items-center justify-center overflow-hidden">
+            <div className="select-none text-center text-white">
+              <div className="text-[clamp(28px,5vw,56px)] font-black uppercase leading-[0.95] tracking-[-0.04em]">
+                Producción
+                <br />≠ improvisación
+              </div>
+              <div className="mt-4 text-[15px] font-extrabold tracking-[-0.03em] opacity-90">aurum</div>
+            </div>
+          </div>
 
           <div className="px-4 sm:px-24">
-            <div className="-mt-10 text-[64px] leading-none">🍣</div>
+            <div className="relative -mt-10 text-[64px] leading-none">🍣</div>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Sin título"
-              className="mt-3 w-full bg-transparent text-[32px] font-bold text-[#37352f] outline-none sm:text-[40px]"
+              className="mt-3 w-full bg-transparent text-[30px] font-black uppercase tracking-[-0.035em] text-[#2b0a0b] outline-none sm:text-[40px]"
             />
 
             {/* view tabs + actions */}
@@ -564,7 +576,7 @@ export default function Workspace() {
                 <button
                   key={v}
                   onClick={() => setView(v)}
-                  className={`-mb-px border-b-2 px-2 py-1.5 ${view === v ? 'border-[#37352f] font-medium text-[#37352f]' : 'border-transparent text-[#787774] hover:text-[#37352f]'}`}
+                  className={`-mb-px border-b-2 px-2 py-1.5 ${view === v ? 'border-[#5a1215] font-medium text-[#5a1215]' : 'border-transparent text-[#787774] hover:text-[#37352f]'}`}
                 >
                   {v === 'table' ? '▤ Tabla' : '▥ Tablero'}
                 </button>
@@ -576,7 +588,7 @@ export default function Workspace() {
                   placeholder="Buscar…"
                   className="w-28 rounded px-2 py-1 text-[14px] outline-none placeholder:text-[#9b9a97] hover:bg-[#f1f1ef] focus:w-44 focus:bg-[#f1f1ef]"
                 />
-                <button onClick={() => add({}, true)} className="rounded bg-[#2383e2] px-2.5 py-1 font-medium text-white hover:bg-[#0077d4]">
+                <button onClick={() => add({}, true)} className="rounded bg-[#7a1a1e] px-2.5 py-1 font-medium text-white hover:bg-[#4a0d10]">
                   Nuevo
                 </button>
               </div>
